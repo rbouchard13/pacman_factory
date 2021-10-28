@@ -1,51 +1,55 @@
 let pos = 0;
-const pacArray = [
-  	['./images/PacMan1.png', './images/PacMan2.png'],
-  	['./images/PacMan3.png', './images/PacMan4.png'],
-];
-let direction = 0;
+var focus = 0;
+var dir = {};
+var i = 1;
 const pacMen = []; 
+const pacArray = [
+  	['./images/PacMan1.png', './images/PacMan2.png'],['./images/PacMan3.png', './images/PacMan4.png'],
+];
+
 function setToRandom(scale) {
   	return {
-    		x: Math.random() * scale,
-    		y: Math.random() * scale,
+    		x: Math.random() * scale, y: Math.random() * scale,
   	};
 }
 
 function makePac() {
-  	let velocity = setToRandom(10); // {x:?, y:?}
-  	let position = setToRandom(200);
+  	let velocity = setToRandom(15); // {x:?, y:?}
+  	let position = setToRandom(800);
   	let game = document.getElementById('game');
-  	let newimg = document.createElement('img');
-  	newimg.style.position = 'absolute';
-  	newimg.src = './images/PacMan1.png';
-  	newimg.style.width = 100;
-  	newimg.style.left = position.x + "px";
-  	newimg.style.top = position.y + "px";
-  	game.appendChild(newimg);
-
+  	let img = document.createElement('img');
+  	img.style.position = 'absolute';
+	img.id = i; dir[i] = 0;
+  	img.src = './images/PacMan1.png';
+  	img.style.width = 100;
+  	img.style.left = position.x + "px";
+  	img.style.top = position.y + "px";
+  	game.appendChild(img);
+	i++;
   	return {
-    		position,
-    		velocity,
-    		newimg,
+    		position, velocity, img,
   	};
 }
 
 function update() {
   	pacMen.forEach((item) => {
+		focus = (focus + 1) % 2;
     		checkCollisions(item);
+		let id = item.img.id;
+		item.img.src = pacArray[dir[id]][focus];
     		item.position.x += item.velocity.x;
     		item.position.y += item.velocity.y;
-    		item.newimg.style.left = item.position.x;
-    		item.newimg.style.top = item.position.y;
+    		item.img.style.left = item.position.x;
+    		item.img.style.top = item.position.y;
   	});
-  	setTimeout(update, 20);
+  	setTimeout(update, 200);
 }
 
 function checkCollisions(item) {
-	let edgeW = window.innerWidth - item.newimg.width;
-	let edgeH = window.innerHeight -item.newimg.width;
-	if (item.position.x >= edgeW || item.position.x <=0){item.velocity.x = item.velocity.x * -1;}
+	let id = item.img.id;
+	let edgeW = window.innerWidth - item.img.width; let edgeH = window.innerHeight -item.img.width;
+	if (item.position.x >= edgeW){item.velocity.x = item.velocity.x * -1; dir[id] = 1;}
+	if (item.position.x <=0){item.velocity.x = item.velocity.x * -1; dir[id] = 0;}
 	if (item.position.y >= edgeH || item.position.y <=0){item.velocity.y = item.velocity.y * -1;}
 }
 
