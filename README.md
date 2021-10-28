@@ -1,6 +1,8 @@
 <h1>PacMan Factory</h1>
 <h2>Future Improvements</h2>
 currently focus only works if you have an odd numnber of images. This needs to be fixed
+<h2>How to run</h2>
+Create new folder on your local system. Copy index.html, Pacman.js and images folder to the folder. Double click or right click/open index.html
 <h2>Soure API's</h2>
 None
 <h2>License</h2>
