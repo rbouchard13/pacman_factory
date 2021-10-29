@@ -28,8 +28,8 @@ function makePac() {
 }
 
 function update() {
+	focus = (focus + 1) % 2;
   	pacMen.forEach((item) => {
-		focus = (focus + 1) % 2;
     		checkCollisions(item);
 		item.img.src = pacArray[item.direction][focus];
     		item.position.x += item.velocity.x;
