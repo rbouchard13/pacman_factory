@@ -11,7 +11,7 @@ function setToRandom(scale) {
 }
 
 function makePac() {
-  	let velocity = setToRandom(15); // {x:?, y:?}
+  	let velocity = setToRandom(13); // {x:?, y:?}
   	let position = setToRandom(800);
 	let direction = 0;
   	let game = document.getElementById('game');
@@ -37,7 +37,7 @@ function update() {
     		item.img.style.left = item.position.x;
     		item.img.style.top = item.position.y;
   	});
-  	setTimeout(update, 200);
+  	setTimeout(update, 125);
 }
 
 function checkCollisions(item) {
