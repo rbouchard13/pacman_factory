@@ -1,7 +1,7 @@
 <h1>PacMan Factory</h1>
 Excercise to create unlimited amount of images and use JS and CSS  to animate them within the user interface. Images should be animated in motion and should reverse direction  and image when contact with the width edge
 <h2>Future Improvements</h2>
-currently focus only works if you have an odd numnber of images. This needs to be fixed
+No futher development planned at this time
 <h2>How to run</h2>
 Create new folder on your local system. Copy index.html, Pacman.js and images folder to the folder. Double click or right click/open index.html
 <h2>Soure API's</h2>
